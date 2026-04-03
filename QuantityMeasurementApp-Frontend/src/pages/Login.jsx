@@ -29,7 +29,7 @@ export default function Login() {
       setError('Google did not share an email. Try another Google account.')
     } else if (lower.startsWith('redirect_uri_mismatch')) {
       setError(
-        'Google OAuth redirect URI mismatch. In Google Cloud Console → Credentials → your OAuth client, add this exact Authorized redirect URI: http://localhost:8080/login/oauth2/code/google'
+        'Google OAuth redirect URI mismatch. In Google Cloud Console → Credentials → your OAuth client, add this exact Authorized redirect URI: ${import.meta.env.VITE_API_BASE_URL}/login/oauth2/code/google'
       )
     } else if (lower.startsWith('invalid_client')) {
       setError(
