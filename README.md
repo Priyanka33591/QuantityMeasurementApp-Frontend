@@ -126,9 +126,6 @@ export const BASE_URL = "http://localhost:8080";
 ## 💡 Future Improvements
 
 * Dark mode 🌙
-* Better UI/UX 🎨
-* Mobile responsiveness 📱
-* Graphs for history 📈
 
 ---
 
