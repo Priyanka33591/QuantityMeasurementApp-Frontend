@@ -34,15 +34,21 @@ export async function signup({ username, password, email }) {
 }
 
 export async function performOperation(body) {
+  console.log("API:", API_BASE)
+
   const res = await fetch(`${API_BASE}/api/v1/quantities/perform`, {
     method: 'POST',
-    headers: authHeaders({ 'Content-Type': 'application/json' }),
+    headers: authHeaders({
+      'Content-Type': 'application/json'
+    }),
     body: JSON.stringify(body),
   })
+
   const text = await res.text()
   if (!res.ok) {
     throw new Error(text || `Request failed (${res.status})`)
   }
+
   return JSON.parse(text)
 }
 
