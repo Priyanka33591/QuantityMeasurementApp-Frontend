@@ -20,8 +20,8 @@ export default function Calculator() {
   const [operationType, setOperationType] = useState('ADD')
   const [v1, setV1] = useState('1')
   const [u1, setU1] = useState('FEET')
-  const [v2, setV2] = useState('12')
-  const [u2, setU2] = useState('INCHES')
+  const [v2, setV2] = useState('1')
+  const [u2, setU2] = useState('FEET')
   const [resultUnit, setResultUnit] = useState('')
 
   const [result, setResult] = useState(null)
@@ -38,7 +38,7 @@ export default function Calculator() {
 
   const multiplyDivideUnitMismatch = useMemo(
     () =>
-      (operationType === 'MULTIPLY' || operationType === 'DIVIDE') && u1 !== u2,
+      (operationType === 'MULTIPLY') && u1 !== u2,
     [operationType, u1, u2]
   )
 
@@ -83,9 +83,9 @@ export default function Calculator() {
       return
     }
 
-    if (operationType === 'MULTIPLY' || operationType === 'DIVIDE') {
+    if (operationType === 'MULTIPLY') {
       if (u1 !== u2) {
-        setError('Units must be the same for multiplication and division.')
+        setError('Units must be the same for multiplication.')
         setLoading(false)
         return
       }
@@ -199,7 +199,7 @@ export default function Calculator() {
 
             {multiplyDivideUnitMismatch ? (
               <p className="calc-unit-warning" role="status">
-                Units must be the same for multiplication and division.
+                Units must be the same for multiplication.
               </p>
             ) : null}
 
@@ -274,7 +274,7 @@ export default function Calculator() {
             <p className="calc-tip-title">Tips</p>
             <ul>
               <li>
-                <strong>Multiply / divide</strong> — same unit on both sides.
+                <strong>Multiply </strong> — same unit on both sides.
               </li>
               <li>
                 <strong>History</strong> —{' '}
