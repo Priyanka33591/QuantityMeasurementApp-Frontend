@@ -55,6 +55,7 @@ export default function Calculator() {
   function handleMeasurementChange(next) {
     setMeasurementType(next);
     syncUnitsForType(next);
+    setError("");
   }
 
   async function handleSubmit(e) {
@@ -170,7 +171,10 @@ export default function Calculator() {
                   key={o.value}
                   type="button"
                   className={`calc-chip ${operationType === o.value ? "is-active" : ""}`}
-                  onClick={() => setOperationType(o.value)}
+                  onClick={() => {
+                    setOperationType(o.value);
+                    setError(""); // 🔥 ADD THIS
+                  }}
                 >
                   {o.label}
                 </button>
