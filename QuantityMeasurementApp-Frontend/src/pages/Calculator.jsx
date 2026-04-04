@@ -192,7 +192,10 @@ export default function Calculator() {
                   type="number"
                   step="any"
                   value={v1}
-                  onChange={(e) => setV1(e.target.value)}
+                  onChange={(e) => {
+                    setV1(e.target.value);
+                    setError("");
+                  }}
                 />
               </div>
               <div className="calc-field">
@@ -200,7 +203,10 @@ export default function Calculator() {
                 <select
                   id="u1"
                   value={u1}
-                  onChange={(e) => setU1(e.target.value)}
+                  onChange={(e) => {
+                    setU1(e.target.value);
+                    setError("");
+                  }}
                 >
                   {units.map((u) => (
                     <option key={u} value={u}>
@@ -220,7 +226,10 @@ export default function Calculator() {
                     type="number"
                     step="any"
                     value={v2}
-                    onChange={(e) => setV2(e.target.value)}
+                    onChange={(e) => {
+                      setV2(e.target.value);
+                      setError("");
+                    }}
                   />
                 </div>
                 <div className="calc-field">
@@ -228,7 +237,10 @@ export default function Calculator() {
                   <select
                     id="u2"
                     value={u2}
-                    onChange={(e) => setU2(e.target.value)}
+                    onChange={(e) => {
+                      setu2(e.target.value);
+                      setError("");
+                    }}
                   >
                     {units.map((u) => (
                       <option key={u} value={u}>
@@ -258,7 +270,10 @@ export default function Calculator() {
                 <select
                   id="ru"
                   value={resultUnit}
-                  onChange={(e) => setResultUnit(e.target.value)}
+                  onChange={(e) => {
+                    setResultUnit(e.target.value);
+                    setError("");
+                  }}
                 >
                   <option value="">
                     {operationType === "CONVERT"
