@@ -238,7 +238,7 @@ export default function Calculator() {
                     id="u2"
                     value={u2}
                     onChange={(e) => {
-                      setu2(e.target.value);
+                      setU2(e.target.value);
                       setError("");
                     }}
                   >
