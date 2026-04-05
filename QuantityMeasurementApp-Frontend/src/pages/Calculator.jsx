@@ -99,15 +99,15 @@ export default function Calculator() {
       }
     }
 
-    // 🔥 divide by zero check
-    if (operationType === "DIVIDE" && Number(v2) === 0) {
-      setError("Cannot divide by zero");
+    if (!v1 || (needsTwo && !v2)) {
+      setError("Please enter valid values");
       setLoading(false);
       return;
     }
 
-    if (!v1 || (needsTwo && !v2)) {
-      setError("Please enter valid values");
+    // 🔥 divide by zero check
+    if (operationType === "DIVIDE" && Number(v2) === 0) {
+      setError("Cannot divide by zero");
       setLoading(false);
       return;
     }
