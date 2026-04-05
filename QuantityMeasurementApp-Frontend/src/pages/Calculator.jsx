@@ -56,6 +56,7 @@ export default function Calculator() {
     setMeasurementType(next);
     syncUnitsForType(next);
     setError("");
+    setResult(null);
   }
 
   async function handleSubmit(e) {
@@ -101,6 +102,12 @@ export default function Calculator() {
     // 🔥 divide by zero check
     if (operationType === "DIVIDE" && Number(v2) === 0) {
       setError("Cannot divide by zero");
+      setLoading(false);
+      return;
+    }
+
+    if (!v1 || (needsTwo && !v2)) {
+      setError("Please enter valid values");
       setLoading(false);
       return;
     }
@@ -173,7 +180,8 @@ export default function Calculator() {
                   className={`calc-chip ${operationType === o.value ? "is-active" : ""}`}
                   onClick={() => {
                     setOperationType(o.value);
-                    setError(""); // 🔥 ADD THIS
+                    setError("");
+                    setResult(null);
                   }}
                 >
                   {o.label}
@@ -195,6 +203,7 @@ export default function Calculator() {
                   onChange={(e) => {
                     setV1(e.target.value);
                     setError("");
+                    setResult(null);
                   }}
                 />
               </div>
@@ -206,6 +215,7 @@ export default function Calculator() {
                   onChange={(e) => {
                     setU1(e.target.value);
                     setError("");
+                    setResult(null);
                   }}
                 >
                   {units.map((u) => (
@@ -229,6 +239,7 @@ export default function Calculator() {
                     onChange={(e) => {
                       setV2(e.target.value);
                       setError("");
+                      setResult(null);
                     }}
                   />
                 </div>
@@ -240,6 +251,7 @@ export default function Calculator() {
                     onChange={(e) => {
                       setU2(e.target.value);
                       setError("");
+                      setResult(null);
                     }}
                   >
                     {units.map((u) => (
